@@ -1,8 +1,6 @@
 package model.repository;
 
-import model.database.DatabaseConnection;
 import model.entity.Bakery;
-import model.entity.builder.BakeryBuilder;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -75,11 +73,10 @@ public class BakeryRepositoryImpl implements BakeryRepository {
 
             while (rs.next()) {
 
-                Bakery bakery = new BakeryBuilder()
-                        .setId(rs.getInt("id"))
-                        .setName(rs.getString("name"))
-                        .setAddress(rs.getString("address"))
-                        .build();
+                Bakery bakery = new Bakery();
+                bakery.setId(rs.getInt("id"));
+                bakery.setName(rs.getString("name"));
+                bakery.setAddress(rs.getString("address"));
 
                 bakeries.add(bakery);
             }
@@ -105,12 +102,10 @@ public class BakeryRepositoryImpl implements BakeryRepository {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-
-                bakery = new BakeryBuilder()
-                        .setId(rs.getInt("id"))
-                        .setName(rs.getString("name"))
-                        .setAddress(rs.getString("address"))
-                        .build();
+                bakery = new Bakery();
+                bakery.setId(rs.getInt("id"));
+                bakery.setName(rs.getString("name"));
+                bakery.setAddress(rs.getString("address"));
             }
 
         } catch (SQLException e) {
