@@ -1,8 +1,6 @@
 package model.repository;
 
-import model.database.DatabaseConnection;
 import model.entity.Cake;
-import model.entity.builder.CakeBuilder;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -79,12 +77,11 @@ public class CakeRepositoryImpl implements CakeRepository {
 
             while (rs.next()) {
 
-                Cake cake = new CakeBuilder()
-                        .setId(rs.getInt("id"))
-                        .setName(rs.getString("name"))
-                        .setPrice(rs.getDouble("price"))
-                        .setImagePath(rs.getString("image_path"))
-                        .build();
+                Cake cake = new Cake();
+                cake.setId(rs.getInt("id"));
+                cake.setName(rs.getString("name"));
+                cake.setPrice(rs.getDouble("price"));
+                cake.setImagePath(rs.getString("image_path"));
 
                 cakes.add(cake);
             }
@@ -109,12 +106,11 @@ public class CakeRepositoryImpl implements CakeRepository {
 
             while (rs.next()) {
 
-                Cake cake = new CakeBuilder()
-                        .setId(rs.getInt("id"))
-                        .setName(rs.getString("name"))
-                        .setPrice(rs.getDouble("price"))
-                        .setImagePath(rs.getString("image_path"))
-                        .build();
+                Cake cake = new Cake();
+                cake.setId(rs.getInt("id"));
+                cake.setName(rs.getString("name"));
+                cake.setPrice(rs.getDouble("price"));
+                cake.setImagePath(rs.getString("image_path"));
 
                 cakes.add(cake);
             }
@@ -141,12 +137,11 @@ public class CakeRepositoryImpl implements CakeRepository {
 
             if (rs.next()) {
 
-                cake = new CakeBuilder()
-                        .setId(rs.getInt("id"))
-                        .setName(rs.getString("name"))
-                        .setPrice(rs.getDouble("price"))
-                        .setImagePath(rs.getString("image_path"))
-                        .build();
+                cake = new Cake();
+                cake.setId(rs.getInt("id"));
+                cake.setName(rs.getString("name"));
+                cake.setPrice(rs.getDouble("price"));
+                cake.setImagePath(rs.getString("image_path"));
             }
 
         } catch (SQLException e) {

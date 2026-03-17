@@ -1,8 +1,7 @@
 package model.repository;
 
-import model.database.DatabaseConnection;
 import model.entity.CakeStock;
-import model.entity.builder.CakeStockBuilder;
+
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -26,14 +25,13 @@ public class CakeStockRepositoryImpl implements CakeStockRepository {
 
             while (rs.next()) {
 
-                CakeStock stock = new CakeStockBuilder()
-                        .setId(rs.getInt("id"))
-                        .setIdCake(rs.getInt("id_cake"))
-                        .setIdBakery(rs.getInt("id_bakery"))
-                        .setQuantity(rs.getInt("quantity"))
-                        .setExpiryDate(rs.getDate("expiry_date").toLocalDate())
-                        .setAvailable(rs.getBoolean("available"))
-                        .build();
+                CakeStock stock = new CakeStock();
+                stock.setId(rs.getInt("id"));
+                stock.setId_cake(rs.getInt("id_cake"));
+                stock.setId_bakery(rs.getInt("id_bakery"));
+                stock.setQuantity(rs.getInt("quantity"));
+                stock.setExpiryDate(rs.getDate("expiry_date").toLocalDate());
+                stock.setAvailable(rs.getBoolean("available"));
 
                 stocks.add(stock);
             }
@@ -61,14 +59,13 @@ public class CakeStockRepositoryImpl implements CakeStockRepository {
 
             while (rs.next()) {
 
-                CakeStock stock = new CakeStockBuilder()
-                        .setId(rs.getInt("id"))
-                        .setIdCake(rs.getInt("id_cake"))
-                        .setIdBakery(rs.getInt("id_bakery"))
-                        .setQuantity(rs.getInt("quantity"))
-                        .setExpiryDate(rs.getDate("expiry_date").toLocalDate())
-                        .setAvailable(rs.getBoolean("available"))
-                        .build();
+                CakeStock stock = new CakeStock();
+                stock.setId(rs.getInt("id"));
+                stock.setId_cake(rs.getInt("id_cake"));
+                stock.setId_bakery(rs.getInt("id_bakery"));
+                stock.setQuantity(rs.getInt("quantity"));
+                stock.setExpiryDate(rs.getDate("expiry_date").toLocalDate());
+                stock.setAvailable(rs.getBoolean("available"));
 
                 stocks.add(stock);
             }
@@ -96,14 +93,13 @@ public class CakeStockRepositoryImpl implements CakeStockRepository {
 
             while (rs.next()) {
 
-                CakeStock stock = new CakeStockBuilder()
-                        .setId(rs.getInt("id"))
-                        .setIdCake(rs.getInt("id_cake"))
-                        .setIdBakery(rs.getInt("id_bakery"))
-                        .setQuantity(rs.getInt("quantity"))
-                        .setExpiryDate(rs.getDate("expiry_date").toLocalDate())
-                        .setAvailable(rs.getBoolean("available"))
-                        .build();
+                CakeStock stock = new CakeStock();
+                stock.setId(rs.getInt("id"));
+                stock.setId_cake(rs.getInt("id_cake"));
+                stock.setId_bakery(rs.getInt("id_bakery"));
+                stock.setQuantity(rs.getInt("quantity"));
+                stock.setExpiryDate(rs.getDate("expiry_date").toLocalDate());
+                stock.setAvailable(rs.getBoolean("available"));
 
                 stocks.add(stock);
             }
