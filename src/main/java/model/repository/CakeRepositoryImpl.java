@@ -9,12 +9,11 @@ import java.util.List;
 public class CakeRepositoryImpl implements CakeRepository {
 
     @Override
-    public void add(Cake cake) {
-
+    public int add(Cake cake) {
         String sql = "INSERT INTO Cake(name, price, image_path) VALUES (?, ?, ?)";
 
         try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
             stmt.setString(1, cake.getName());
             stmt.setDouble(2, cake.getPrice());
@@ -22,9 +21,16 @@ public class CakeRepositoryImpl implements CakeRepository {
 
             stmt.executeUpdate();
 
+            ResultSet rs = stmt.getGeneratedKeys();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        return -1;
     }
 
     @Override

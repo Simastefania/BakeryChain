@@ -4,12 +4,11 @@ import java.time.LocalDate;
 
 public class CakeStock {
     private int id;
-    private int id_cake;
-    private int id_bakery;
+    private int cakeId;
+    private int bakeryId;
     private int quantity;
     private LocalDate expiryDate;
     private boolean available;
-
 
     public int getId() {
         return id;
@@ -19,20 +18,20 @@ public class CakeStock {
         this.id = id;
     }
 
-    public int getId_cake() {
-        return id_cake;
+    public int getCakeId() {
+        return cakeId;
     }
 
-    public void setId_cake(int id_cake) {
-        this.id_cake = id_cake;
+    public void setCakeId(int cakeId) {
+        this.cakeId = cakeId;
     }
 
-    public int getId_bakery() {
-        return id_bakery;
+    public int getBakeryId() {
+        return bakeryId;
     }
 
-    public void setId_bakery(int id_bakery) {
-        this.id_bakery = id_bakery;
+    public void setBakeryId(int bakeryId) {
+        this.bakeryId = bakeryId;
     }
 
     public int getQuantity() {
