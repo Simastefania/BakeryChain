@@ -1,8 +1,8 @@
 package presenter;
 
-import model.entity.Bakery;
-import model.entity.Cake;
-import model.entity.CakeStock;
+import model.domain.Bakery;
+import model.domain.Cake;
+import model.domain.CakeStock;
 import model.repository.BakeryRepository;
 import model.repository.BakeryRepositoryImpl;
 import model.repository.CakeRepository;
@@ -106,6 +106,12 @@ public class MainPresenter {
             int quantity = Integer.parseInt(quantityText);
             LocalDate expiryDate = LocalDate.parse(expiryDateText);
             boolean available = Boolean.parseBoolean(availableText);
+
+            Bakery bakery = bakeryRepository.findById(bakeryId);
+            if (bakery == null) {
+                view.showError("Bakery with id " + bakeryId + " does not exist.");
+                return;
+            }
 
             Cake cake = new Cake();
             cake.setName(name);
@@ -235,6 +241,22 @@ public class MainPresenter {
         }
     }
 
+    public void handleCakeSelection(String selectedValue) {
+        if (selectedValue == null) {
+            return;
+        }
 
+        String[] parts = selectedValue.split("\\|");
+        if (parts.length < 4) {
+            return;
+        }
 
+        String id = parts[0].trim();
+        String name = parts[1].trim();
+        String price = parts[2].trim();
+        String imagePath = parts[3].trim();
+
+        view.fillCakeFields(id, name, price, imagePath);
+        view.showCakeImage(imagePath);
+    }
 }

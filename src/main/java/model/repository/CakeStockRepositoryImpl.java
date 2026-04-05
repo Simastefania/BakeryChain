@@ -1,6 +1,6 @@
 package model.repository;
 
-import model.entity.CakeStock;
+import model.domain.CakeStock;
 
 import java.sql.*;
 import java.util.ArrayList;

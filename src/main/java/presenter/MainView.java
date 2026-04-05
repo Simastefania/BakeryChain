@@ -8,4 +8,6 @@ public interface MainView {
     void showStocks(List<String> stocks);
     void showError(String message);
     void showMessage(String message);
+    void fillCakeFields(String id, String name, String price, String imagePath);
+    void showCakeImage(String imagePath);
 }

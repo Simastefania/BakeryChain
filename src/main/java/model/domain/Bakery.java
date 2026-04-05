@@ -1,4 +1,4 @@
-package model.entity;
+package model.domain;
 
 public class Bakery {
     private int id;
