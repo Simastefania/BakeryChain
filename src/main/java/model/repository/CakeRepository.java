@@ -1,6 +1,6 @@
 package model.repository;
 
-import model.entity.Cake;
+import model.domain.Cake;
 
 import java.util.List;
 

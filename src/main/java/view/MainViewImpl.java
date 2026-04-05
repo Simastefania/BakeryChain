@@ -5,6 +5,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+
 import presenter.MainPresenter;
 import presenter.MainView;
 
@@ -129,18 +130,9 @@ public class MainViewImpl extends VBox implements MainView {
         cakeImageView.setFitHeight(200);
         cakeImageView.setPreserveRatio(true);
 
-        cakeList.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
-            if (newVal != null) {
-                String[] parts = newVal.split("\\|");
-                if (parts.length >= 4) {
-                    cakeIdField.setText(parts[0].trim());
-                    cakeNameField.setText(parts[1].trim());
-                    cakePriceField.setText(parts[2].trim());
-                    cakeImageField.setText(parts[3].trim());
-                    loadImage(parts[3].trim());
-                }
-            }
-        });
+        cakeList.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) ->
+                presenter.handleCakeSelection(newVal)
+        );
 
         Button addButton = new Button("Add cake");
         Button updateButton = new Button("Update cake");
@@ -263,5 +255,18 @@ public class MainViewImpl extends VBox implements MainView {
         alert.setHeaderText("Information");
         alert.setContentText(message);
         alert.show();
+    }
+
+    @Override
+    public void fillCakeFields(String id, String name, String price, String imagePath) {
+        cakeIdField.setText(id);
+        cakeNameField.setText(name);
+        cakePriceField.setText(price);
+        cakeImageField.setText(imagePath);
+    }
+
+    @Override
+    public void showCakeImage(String imagePath) {
+        loadImage(imagePath);
     }
 }

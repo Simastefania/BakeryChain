@@ -1,6 +1,6 @@
 package model.repository;
 
-import model.entity.Bakery;
+import model.domain.Bakery;
 
 import java.sql.*;
 import java.util.ArrayList;
